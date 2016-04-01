@@ -29,5 +29,8 @@ object ImportCSV extends App {
   // remaining list would be used to create the data avro files
   avroParseObj.genAvroData(avscSchema, header, dataList)
   
+  //read from avro
+  avroParseObj.readFromAvro(avscSchema)
+  
   
 }
