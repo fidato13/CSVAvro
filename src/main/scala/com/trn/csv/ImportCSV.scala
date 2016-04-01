@@ -1,6 +1,6 @@
 package com.trn.csv
 
-import com.trn.json.AvroParser
+import com.trn.avro.AvroParser
 
 /**
  * @author fidato
@@ -13,17 +13,21 @@ object ImportCSV extends App {
   val totalRecords = fileLines.size
   
   //for the header ie first element
-  val header = fileLines.head.split(",").toList
+  val header: List[String] = fileLines.head.split(",").toList
   
   // remaining list
-  val dataList = fileLines.tail
+  val dataList: List[String] = fileLines.tail
+  
+  //create avro parser object
+  val avroParseObj = new AvroParser
   
   //header would be used to form the avro json schema
-  val avscSchema = (new AvroParser).headerToAvsc(header)
+  val avscSchema = avroParseObj.headerToAvsc(header)
   
-  //println("The returned Schema is => "+avscSchema)
+  println("The returned Schema is => "+avscSchema)
   
   // remaining list would be used to create the data avro files
+  avroParseObj.genAvroData(avscSchema, header, dataList)
   
   
 }

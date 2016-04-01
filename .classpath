@@ -1,13 +1,30 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" output="target/scala-2.10/classes" path="src/main/scala-2.10"/>
-	<classpathentry kind="src" output="target/scala-2.10/classes" path="src/main/scala"/>
-	<classpathentry kind="src" output="target/scala-2.10/classes" path="src/main/java"/>
-	<classpathentry kind="src" output="target/scala-2.10/test-classes" path="src/test/scala-2.10"/>
-	<classpathentry kind="src" output="target/scala-2.10/test-classes" path="src/test/scala"/>
-	<classpathentry kind="src" output="target/scala-2.10/test-classes" path="src/test/java"/>
-	<classpathentry kind="src" path="src/main/resources"/>
-	<classpathentry kind="con" path="org.scala-ide.sdt.launching.SCALA_CONTAINER"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="output" path="bin"/>
+  <classpathentry output="target\scala-2.10\classes" kind="src" path="src\main\scala-2.10"/>
+  <classpathentry output="target\scala-2.10\classes" kind="src" path="src\main\scala"/>
+  <classpathentry output="target\scala-2.10\classes" kind="src" path="src\main\java"/>
+  <classpathentry output="target\scala-2.10\test-classes" kind="src" path="src\test\scala-2.10"/>
+  <classpathentry output="target\scala-2.10\test-classes" kind="src" path="src\test\scala"/>
+  <classpathentry output="target\scala-2.10\test-classes" kind="src" path="src\test\java"/>
+  <classpathentry kind="con" path="org.scala-ide.sdt.launching.SCALA_CONTAINER"/>
+  <classpathentry kind="lib" path="C:\Users\Tarun\.ivy2\cache\org.apache.avro\avro\jars\avro-1.7.7.jar"/>
+  <classpathentry kind="lib" path="C:\Users\Tarun\.ivy2\cache\org.codehaus.jackson\jackson-core-asl\jars\jackson-core-asl-1.9.13.jar"/>
+  <classpathentry kind="lib" path="C:\Users\Tarun\.ivy2\cache\org.codehaus.jackson\jackson-mapper-asl\jars\jackson-mapper-asl-1.9.13.jar"/>
+  <classpathentry kind="lib" path="C:\Users\Tarun\.ivy2\cache\com.thoughtworks.paranamer\paranamer\jars\paranamer-2.3.jar"/>
+  <classpathentry kind="lib" path="C:\Users\Tarun\.ivy2\cache\org.xerial.snappy\snappy-java\bundles\snappy-java-1.0.5.jar"/>
+  <classpathentry kind="lib" path="C:\Users\Tarun\.ivy2\cache\org.apache.commons\commons-compress\jars\commons-compress-1.4.1.jar"/>
+  <classpathentry kind="lib" path="C:\Users\Tarun\.ivy2\cache\org.tukaani\xz\jars\xz-1.0.jar"/>
+  <classpathentry kind="lib" path="C:\Users\Tarun\.ivy2\cache\org.slf4j\slf4j-api\jars\slf4j-api-1.6.4.jar"/>
+  <classpathentry kind="lib" path="C:\Users\Tarun\.ivy2\cache\org.scalatest\scalatest_2.10\bundles\scalatest_2.10-2.2.1.jar"/>
+  <classpathentry kind="lib" path="C:\Users\Tarun\.ivy2\cache\commons-io\commons-io\jars\commons-io-2.4.jar"/>
+  <classpathentry kind="lib" path="C:\Users\Tarun\.ivy2\cache\org.apache.avro\avro-mapred\jars\avro-mapred-1.7.7-hadoop2.jar"/>
+  <classpathentry kind="lib" path="C:\Users\Tarun\.ivy2\cache\org.apache.avro\avro-ipc\jars\avro-ipc-1.7.7-tests.jar"/>
+  <classpathentry kind="lib" path="C:\Users\Tarun\.ivy2\cache\org.apache.avro\avro-ipc\jars\avro-ipc-1.7.7.jar"/>
+  <classpathentry kind="lib" path="C:\Users\Tarun\.ivy2\cache\org.mortbay.jetty\jetty\jars\jetty-6.1.26.jar"/>
+  <classpathentry kind="lib" path="C:\Users\Tarun\.ivy2\cache\org.mortbay.jetty\jetty-util\jars\jetty-util-6.1.26.jar"/>
+  <classpathentry kind="lib" path="C:\Users\Tarun\.ivy2\cache\io.netty\netty\bundles\netty-3.4.0.Final.jar"/>
+  <classpathentry kind="lib" path="C:\Users\Tarun\.ivy2\cache\org.apache.velocity\velocity\jars\velocity-1.7.jar"/>
+  <classpathentry kind="lib" path="C:\Users\Tarun\.ivy2\cache\commons-collections\commons-collections\jars\commons-collections-3.2.1.jar"/>
+  <classpathentry kind="lib" path="C:\Users\Tarun\.ivy2\cache\commons-lang\commons-lang\jars\commons-lang-2.4.jar"/>
+  <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+  <classpathentry kind="output" path="bin"/>
 </classpath>
