@@ -12,11 +12,12 @@ import org.apache.avro.io.DatumWriter
 import org.apache.avro.generic.GenericDatumReader
 import org.apache.avro.file.DataFileReader
 import java.io.InputStream
+import com.trn.config.ConfigFactory
 
 /**
  * @author fidato
  */
-class AvroParser {
+class AvroParser(config: ConfigFactory) {
 
   val initAvsc = "{\"namespace\": \"com.trn.avro\",\"type\": \"record\",\"name\": \"ConvertedAvro\",\"fields\": ["
 
@@ -92,13 +93,13 @@ class AvroParser {
   def genAvroClass(inputDirectory: String, avscSchemaFile: String) = {
 
     // Run a java app in a separate system process
-    val proc = Runtime.getRuntime().exec("java -jar C:/fidato/software/avro/avro-tools-1.7.7.jar compile schema " + avscSchemaFile + " " + inputDirectory)
+    val proc = Runtime.getRuntime().exec("java -jar "+ config.avro_tools +" compile schema " + avscSchemaFile + " " + inputDirectory)
     // Then retreive the process output
     val in: InputStream = proc.getInputStream()
     val err: InputStream = proc.getErrorStream()
 
-    println("Input Stream => " + in)
-    println("Error Stream => " + err)
+    /*println("Input Stream => " + in)
+    println("Error Stream => " + err)*/
   }
 
   def readFromAvro(avroSchema: String) = {

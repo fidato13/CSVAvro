@@ -4,20 +4,32 @@ import com.trn.avro.AvroParser
 import java.io.File
 import java.io.BufferedWriter
 import java.io.FileWriter
+import com.trn.config.ConfigFactory
+import scala.reflect.internal.util.NoSourceFile
+import java.nio.file.NoSuchFileException
 
 /**
  * @author fidato
  */
-class CSVToAvro(inputCSVAbsolutePath: String, genAvroClass: Boolean = false) {
+class CSVToAvro(config: ConfigFactory, genAvroClass: Boolean = false) {
 
+  def processAvro = {
+    //pre processing validations here, if succeded then call the method createAvro
+    
+    config match {
+      case x if (x.input_csv != null && x.input_csv.length > 0 && x.avro_tools != null && x.avro_tools.length > 0) => createAvro
+      case _ => println("invalid request")
+    }
+  }
+  
   //inputCSVAbsolutePath should contain '/' and not \\ or '\'
-  def getAvro = {
+  private def createAvro = {
 
     //read the csv file and create the list
-    val fileLines: List[String] = io.Source.fromFile(inputCSVAbsolutePath).getLines.toList
+    val fileLines: List[String] = io.Source.fromFile(config.input_csv).getLines.toList
 
     //create avro parser object
-    val avroParseObj = new AvroParser
+    val avroParseObj = new AvroParser(config)
 
     //header
     val header: List[String] = fetchHeader(fileLines)
@@ -26,10 +38,10 @@ class CSVToAvro(inputCSVAbsolutePath: String, genAvroClass: Boolean = false) {
     val csvDataRows: List[String] = dataRows(fileLines)
 
     //filename without csv
-    val fileName: String = getFileName(inputCSVAbsolutePath)
+    val fileName: String = getFileName(config.input_csv)
 
     //input directory
-    val inputDirectory: String = getDirectory(inputCSVAbsolutePath)
+    val inputDirectory: String = getDirectory(config.input_csv)
 
     //header would be used to form the avro json schema
     val avscSchema: String = avroParseObj.headerToAvsc(header)

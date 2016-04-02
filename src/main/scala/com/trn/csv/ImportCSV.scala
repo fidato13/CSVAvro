@@ -1,6 +1,7 @@
 package com.trn.csv
 
 import com.trn.avro.AvroParser
+import com.trn.config.ConfigFactory
 
 /**
  * @author fidato
@@ -37,11 +38,9 @@ object ImportCSV extends App {
   
   println("fileLines => "+ fileLines)*/
   
-  val csvAvro = new CSVToAvro("C:/fidato/software/avro/import.csv",true)
-  
-  println("call - 0")
-  
-  csvAvro.getAvro
+ val conf = new ConfigFactory("C:/fidato/software/avro/avro-tools-1.7.7.jar", "C:/fidato/software/avro/import.csv")
+ 
+ new CSVToAvro(conf,true).processAvro
   
   
   

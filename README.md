@@ -23,16 +23,22 @@ To create an avro data file from csv:
 
 ...
 
-1. Create an instance of CSVToAvro class with constructor param as :
+1. Create an instance of ConfigFactory class with constructor param as :
 
-	val csvAvro = new CSVToAvro("C:/fidato/software/avro/import.csv",true)
+	val conf = new ConfigFactory("C:/fidato/software/avro/avro-tools-1.7.7.jar", "C:/fidato/software/avro/import.csv")
 	
-	above shows the first parameter as the absolute path of csv
-	second parameter is to be set to true if you require the corresponding avro class to be generated.
+	above shows the first parameter as the absolute path of avro-tools jar on your system
+	second parameter is for absolute path of input csv
+	
+2. Then create the instance of CSVToAvro with the two params:
+
+	new CSVToAvro(conf,true).processAvro
+	
+	first param is the ConfigFactory Instance
+	second param is set to true if the avro classes generation is required 
 	
 ...
 
 ## TODO
 
-1. Remove hardcoding of avro-tools jar and put that into a property file
-2. Also, add some more parameters to the property file or create a configuration class to hold all the values
+1. Remove avro-tools jar as the primary requirement as this is only required in case the user wants to generate the avro class
