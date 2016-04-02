@@ -24,6 +24,7 @@ To create an avro data file from csv:
 ...
 
 1. Create an instance of CSVToAvro class with constructor param as :
+
 	val csvAvro = new CSVToAvro("C:/fidato/software/avro/import.csv",true)
 	
 	above shows the first parameter as the absolute path of csv

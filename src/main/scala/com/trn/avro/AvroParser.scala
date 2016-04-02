@@ -83,7 +83,7 @@ class AvroParser {
     val dataFileWriter = new DataFileWriter[GenericRecord](datumWriter)
     dataFileWriter.create(schema, file)
 
-    listAvroData.foreach { case (x, y) if x.length == 0 => { println("reached for => " + y); dataFileWriter.append(y) } }
+    listAvroData.foreach { case (x, y) if x.length == 0 =>  dataFileWriter.append(y) }
 
     dataFileWriter.close()
 
