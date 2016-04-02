@@ -7,7 +7,7 @@ import com.trn.avro.AvroParser
  */
 object ImportCSV extends App {
   
-  val fileName = "import.csv"
+  /*val fileName = "import.csv"
   
   val fileLines = io.Source.fromFile("src/main/resources/"+ fileName).getLines.toList
   val totalRecords = fileLines.size
@@ -27,10 +27,23 @@ object ImportCSV extends App {
   println("The returned Schema is => "+avscSchema)
   
   // remaining list would be used to create the data avro files
-  avroParseObj.genAvroData(avscSchema, header, dataList)
+  //avroParseObj.genAvroData(avscSchema, header, dataList)
   
   //read from avro
   avroParseObj.readFromAvro(avscSchema)
+  */
+  
+ /* val fileLines: List[String] = io.Source.fromFile("C:/fidato/software/avro/import.csv").getLines.toList
+  
+  println("fileLines => "+ fileLines)*/
+  
+  val csvAvro = new CSVToAvro("C:/fidato/software/avro/import.csv",true)
+  
+  println("call - 0")
+  
+  csvAvro.getAvro
+  
+  
   
   
 }

@@ -11,6 +11,7 @@ import org.apache.avro.generic.GenericRecord
 import org.apache.avro.io.DatumWriter
 import org.apache.avro.generic.GenericDatumReader
 import org.apache.avro.file.DataFileReader
+import java.io.InputStream
 
 /**
  * @author fidato
@@ -43,7 +44,7 @@ class AvroParser {
 
   }
 
-  def genAvroData(avroSchema: String, header: List[String], dataList: List[String]) = {
+  def genAvroData(avroSchema: String, header: List[String], dataList: List[String], inputFileName: String, inputDirectory: String) = {
 
     val schema: Schema = new Schema.Parser().parse(avroSchema)
 
@@ -71,13 +72,13 @@ class AvroParser {
     }) // end listAvroData
 
     //now write to avro file
-    writeAvroToFile(schema, listAvroData)
+    writeAvroToFile(schema, listAvroData, inputFileName, inputDirectory)
 
   }
 
-  def writeAvroToFile(schema: Schema, listAvroData: List[(String, GenericData.Record)]) = {
+  def writeAvroToFile(schema: Schema, listAvroData: List[(String, GenericData.Record)], inputFileName: String, inputDirectory: String) = {
 
-    val file = new File("src/main/resources/gen-avro.avro")
+    val file = new File(inputDirectory + inputFileName + ".avro")
     val datumWriter = new GenericDatumWriter[GenericRecord](schema)
     val dataFileWriter = new DataFileWriter[GenericRecord](datumWriter)
     dataFileWriter.create(schema, file)
@@ -88,24 +89,33 @@ class AvroParser {
 
   }
 
+  def genAvroClass(inputDirectory: String, avscSchemaFile: String) = {
+
+    // Run a java app in a separate system process
+    val proc = Runtime.getRuntime().exec("java -jar C:/fidato/software/avro/avro-tools-1.7.7.jar compile schema " + avscSchemaFile + " " + inputDirectory)
+    // Then retreive the process output
+    val in: InputStream = proc.getInputStream()
+    val err: InputStream = proc.getErrorStream()
+
+    println("Input Stream => " + in)
+    println("Error Stream => " + err)
+  }
+
   def readFromAvro(avroSchema: String) = {
 
     val schema = new Schema.Parser().parse(avroSchema)
 
     //create the GenericData object
     val obj = new GenericData.Record(schema)
-    
+
     val file = new File("src/main/resources/gen-avro.avro")
-    
-    
-    
+
     val datumReader = new GenericDatumReader[GenericRecord](schema)
     val dataFileReader = new DataFileReader[GenericRecord](file, datumReader)
- 
-    while (dataFileReader.hasNext()) 
-    {
-    
-    println(dataFileReader.next())
+
+    while (dataFileReader.hasNext()) {
+
+      println(dataFileReader.next())
     }
 
   }
