@@ -42,3 +42,5 @@ To create an avro data file from csv:
 ## TODO
 
 1. Remove avro-tools jar as the primary requirement as this is only required in case the user wants to generate the avro class
+
+![Alt text](/img.jpg?raw=true "Optional Title")
